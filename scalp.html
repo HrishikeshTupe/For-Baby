@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Kriti ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
+}
+
+.container{
+width:90%;
+max-width:600px;
+padding:30px;
+animation:fadeIn 1s;
+}
+
+h1{
+font-size:2.5rem;
+margin-bottom:20px;
+}
+
+p{
+font-size:1.2rem;
+line-height:1.8;
+}
+
+button{
+margin-top:30px;
+padding:15px 35px;
+border:none;
+border-radius:30px;
+background:white;
+color:#ff4d6d;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+}
+
+.heart{
+position:absolute;
+font-size:24px;
+animation:float 6s linear infinite;
+opacity:0.8;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh);
+opacity:0;
+}
+10%{
+opacity:1;
+}
+100%{
+transform:translateY(-100vh);
+opacity:0;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="container" id="content">
+<h1>Hey Kriti ❤️</h1>
+<p>A little surprise from someone who thinks you're really special...</p>
+<button onclick="nextScreen()">Open ✨</button>
+</div>
+
+<script>
+
+const screens = [
+
+{
+title:"Do you remember? 💭",
+text:"Not every memory stays forever... but some moments quietly find a place in our hearts."
+},
+
+{
+title:"That Day 🏡",
+text:"The first time I came to your place. Maybe it was an ordinary day for everyone else... but it became one of my favorite memories."
+},
+
+{
+title:"Since Then ❤️",
+text:"Every conversation with you felt a little more special. Every message from you made me smile a little more."
+},
+
+{
+title:"Something Changed ✨",
+text:"Without even realizing it, you became someone I looked forward to talking to every day."
+},
+
+{
+title:"One Last Thing 💖",
+text:"Tap the heart below..."
+}
+
+];
+
+let current = 0;
+
+function nextScreen(){
+
+if(current < screens.length){
+
+document.getElementById("content").innerHTML=`
+<h1>${screens[current].title}</h1>
+<p>${screens[current].text}</p>
+<button onclick="nextScreen()">Next ❤️</button>
+`;
+
+current++;
+
+}else{
+
+showFinal();
+}
+
+}
+
+function showFinal(){
+
+document.body.style.background =
+"linear-gradient(135deg,#ff4d6d,#ff758c)";
+
+document.getElementById("content").innerHTML=`
+
+<h1 style="font-size:4rem;">❤️</h1>
+
+<h1>Kriti</h1>
+
+<p style="margin-top:20px;">
+The first time I came to your place became one of my favorite memories.
+<br><br>
+You make ordinary moments feel special.
+<br><br>
+And today, I just wanted you to know...
+</p>
+
+<h1 style="margin-top:30px;font-size:3.5rem;">
+I LOVE YOU ❤️
+</h1>
+
+<p style="margin-top:15px;">
+Forever Yours,
+<br>
+<strong>Hrishikesh</strong>
+</p>
+
+`;
+
+for(let i=0;i<50;i++){
+createHeart();
+}
+}
+
+function createHeart(){
+
+let heart=document.createElement("div");
+
+heart.classList.add("heart");
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(20+Math.random()*30)+"px";
+heart.style.animationDuration=
+(4+Math.random()*4)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},8000);
+
+}
+
+setInterval(()=>{
+createHeart();
+},600);
+
+</script>
+
+</body>
+</html>
